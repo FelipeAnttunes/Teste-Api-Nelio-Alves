@@ -20,7 +20,7 @@ public class TestConfig implements CommandLineRunner {
 	
 	// declarando atributo e associando uma instancia do repository ao config. //
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository repository;
 
 	@Override // metodo usado para executar essa classe qnd o programa for iniciado. //
 	public void run(String... args) throws Exception {
@@ -29,7 +29,7 @@ public class TestConfig implements CommandLineRunner {
 		User u2 = new User(null, "Usuario2", "usuario2@gmail.com", "977777777", "123456");
 		
 		// salvando os objetos criados no banco de dados. //
-		userRepository.saveAll(Arrays.asList(u1, u2));
+		repository.saveAll(Arrays.asList(u1, u2));
 		
 	}
 }
