@@ -29,7 +29,7 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-   // garante que o formato do momento data e hora seja mostrado no padrao ISO 8601
+   // garante que o formato do momento data e hora seja mostrado no padrao ISO 8601. //
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
 	
