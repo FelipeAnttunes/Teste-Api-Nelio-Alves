@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.example.backend.testApi.entities.Category;
 import com.example.backend.testApi.entities.Order;
 import com.example.backend.testApi.entities.OrderItem;
+import com.example.backend.testApi.entities.Payment;
 import com.example.backend.testApi.entities.Product;
 import com.example.backend.testApi.entities.User;
 import com.example.backend.testApi.entities.enums.OrderStatus;
@@ -94,6 +95,16 @@ public class TestConfig implements CommandLineRunner {
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+		
+		// fazendo a associação de mao dupla para salvar o pagamento no pedido
+		// criando essa nova instancia nao tendo que chamar o repository dessa
+		// classe e sim fazendo o save juntamente com a propria classe
+		// associada. //
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
+		
 
 	}
 }
